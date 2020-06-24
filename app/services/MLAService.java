@@ -65,7 +65,7 @@ public class MLAService {
                     return items;
                 });
         try {
-            result = response.toCompletableFuture().get(20, TimeUnit.SECONDS);//.getItemsOK();
+            result = response.toCompletableFuture().get(20, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

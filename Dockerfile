@@ -8,9 +8,9 @@ USER root
 RUN /bin/bash -c 'chmod +x ./app/stage/bin/coupon-api'
 
 WORKDIR /app
-EXPOSE 9000
+EXPOSE 8080
 
-CMD [ "/bin/bash", "/app/stage/bin/coupon-api"]
+CMD [ "/bin/bash", "/app/stage/bin/coupon-api", "-Dhttp.port=8080"]
 
 
 

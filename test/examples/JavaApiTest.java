@@ -8,20 +8,8 @@ import org.paukov.combinatorics3.Generator;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
 
 public class JavaApiTest {
-
-    @Test
-    public void testMultiply() {
-        JavaApi api = new JavaApi<String>();
-        int result = api.multiply(2, 3);
-        System.out.println("EL resultado: " + result);
-
-        assertEquals(6, result);
-    }
-
-
 
     @Test
     public void testSubSets() {
