@@ -7,6 +7,11 @@ public class CouponRequest {
     private List<String> item_ids;
     private float amount;
 
+    public CouponRequest(List<String> itemIds, float amount) {
+        this.item_ids = itemIds;
+        this.amount = amount;
+    }
+
     public List<String> getItem_ids() {
         return item_ids;
     }
