@@ -18,7 +18,7 @@ para una mejor detalle leer: EjercicioCupon.pdf
 
 Utilizando cualquier herramienta que permita el envío de peticiones HTTP REST (ej: Postman), 
 realizar una peticion POST a 
-        https://20200623t205757-dot-rosy-element-281216.uc.r.appspot.com/coupon
+        https://rosy-element-281216.uc.r.appspot.com/coupon
 con el siguiente body del tipo (application/json) :
 
         {
@@ -32,5 +32,6 @@ en el cual se detallan los ids de los items que un usuario posee en sus favorito
 
 - La api fue desarrollada con Play framework 2.8 y java 1.8
 - la cobertura de test se realiza mediante Jacoco, el cual se puede verificar corriendo el comando : sbt clean jacoco
-
-
+- El deploy de la app se hace mediante gcloud:
+    - sbt clean stage 
+    - gcloud app deploy
