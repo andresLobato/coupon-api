@@ -24,5 +24,23 @@ public class CouponResponseTest {
         assertArrayEquals(changedList.toArray(), couponResponse.getItem_ids().toArray());
     }
 
+    @Test
+    public void testConstructor() {
+        CouponResponse couponResponse = new CouponResponse();
+        assertFalse(couponResponse.hasItems());
+    }
+
+    @Test
+    public void testTotalZero() {
+        List<String> originalList = Lists.newArrayList("MLA1", "MLA2");
+        CouponResponse couponResponse = new CouponResponse(0f, originalList);
+        assertFalse(couponResponse.hasItems());
+    }
+
+    @Test
+    public void testItemsNull() {
+        CouponResponse couponResponse = new CouponResponse(90f, null);
+        assertFalse(couponResponse.hasItems());
+    }
 
 }

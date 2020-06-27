@@ -5,7 +5,6 @@ import com.google.common.collect.Maps;
 import models.CouponRequest;
 import models.CouponResponse;
 import models.Item;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -27,10 +26,6 @@ public class CouponServiceTest {
             new Item("MLA4", 80f),
             new Item("MLA5", 90f));
 
-    @Before
-    public void setup() {
-    }
-
     @Test
     public void testMaximizeCoupon() throws ExecutionException, InterruptedException {
         CouponRequest rqs = new CouponRequest(Lists.newArrayList("MLA1", "MLA2", "MLA3", "MLA4", "MLA5"), 500f);
@@ -38,6 +33,17 @@ public class CouponServiceTest {
         CompletionStage<CouponResponse> stage = couponService.maximizeCoupon(rqs);
         CouponResponse couponResponse = stage.toCompletableFuture().get();
         assertTrue(480f == couponResponse.getTotal());
+    }
+
+    @Test
+    public void testLuckyOne() throws ExecutionException, InterruptedException {
+        CouponRequest rqs = new CouponRequest(Lists.newArrayList("MLA1", "MLA2", "MLA3", "MLA4", "MLA5", "MLA6"), 500f);
+        itemList.add(new Item("MLA6", 500f));
+        when(mockMlaService.getItems(any(List.class))).thenReturn(itemList);
+        CompletionStage<CouponResponse> stage = couponService.maximizeCoupon(rqs);
+        CouponResponse couponResponse = stage.toCompletableFuture().get();
+        assertTrue(couponResponse.hasItems());
+        assertTrue(couponResponse.getItem_ids().get(0).equals("MLA6"));
     }
 
     @Test
