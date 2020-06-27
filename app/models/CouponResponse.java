@@ -1,11 +1,18 @@
 package models;
 
+import com.google.common.collect.Lists;
+
 import java.util.List;
 
 public class CouponResponse {
 
     private List<String> item_ids;
     private float total;
+
+    public CouponResponse() {
+        this.total = 0f;
+        this.item_ids = Lists.newArrayList();
+    }
 
     public CouponResponse(float total, List<String> itemsIds) {
         this.total = total;

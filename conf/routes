@@ -3,8 +3,6 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
-
 POST    /coupon                     controllers.CouponController.coupon(request:Request)
 
 # Map static resources from the /public folder to the /assets URL path

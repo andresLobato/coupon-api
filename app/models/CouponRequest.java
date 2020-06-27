@@ -1,11 +1,17 @@
 package models;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CouponRequest {
 
     private List<String> item_ids;
     private float amount;
+
+    public CouponRequest(List<String> itemIds, float amount) {
+        this.item_ids = itemIds;
+        this.amount = amount;
+    }
 
     public List<String> getItem_ids() {
         return item_ids;
@@ -23,4 +29,7 @@ public class CouponRequest {
         this.amount = amount;
     }
 
+    public List<String> getIdsWithoutDuplicates() {
+        return this.getItem_ids().stream().distinct().collect(Collectors.toList());
+    }
 }
